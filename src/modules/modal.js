@@ -1,10 +1,10 @@
 import { animate } from './helpers'
 
 const modal = () => {
+    const button = document.querySelector('#btn-callback');
     const modal = document.querySelector('.header-modal');
     const modalOverlay = document.querySelector('.overlay');
-    const button = document.querySelector('#btn-callback');
-    // const popupContent = modal.querySelector('.popup-content');
+    const closeBtn = modal.querySelector('.header-modal__close');
 
     const modalAnimate = () => {
         animate({
@@ -13,25 +13,25 @@ const modal = () => {
                 return timeFraction;
             },
             draw(progress) {
-                modal.style.top = (progress * 80 - 30) + '%';
+                modal.style.top = (progress * 85 - 35) + '%';
             }
         })
     };
 
+    const modalClose = () => {
+        modal.style.display = 'none';
+        modalOverlay.style.display = 'none';
+    }
 
-
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
         modal.style.display = 'block';
         modalOverlay.style.display = 'block';
         modalAnimate();
     })
 
-    // modal.addEventListener('click', (e) => {
-    //     if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
-    //         modal.style.display = 'none';
-    //         count = -750;
-    //     }
-    // })
+    modalOverlay.addEventListener('click', () => { modalClose() })
+    closeBtn.addEventListener('click', () => { modalClose() })
 }
 
 export default modal;
