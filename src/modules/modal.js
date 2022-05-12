@@ -5,7 +5,6 @@ const modal = () => {
     const modalOverlay = document.querySelector('.overlay');
     const button = document.querySelector('#btn-callback');
     // const popupContent = modal.querySelector('.popup-content');
-    let top = 30;
 
     const modalAnimate = () => {
         animate({
@@ -14,8 +13,7 @@ const modal = () => {
                 return timeFraction;
             },
             draw(progress) {
-                console.log((progress * (top + 50) - 30));
-                modal.style.top = (progress * (top + 50) - 30) + '%';
+                modal.style.top = (progress * 80 - 30) + '%';
             }
         })
     };
