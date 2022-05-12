@@ -1,31 +1,32 @@
+import { animate } from './helpers'
+
 const modal = () => {
-
-
-
-    // const modal = document.querySelector('.popup');
-    // const buttons = document.querySelectorAll('.popup-btn');
+    const modal = document.querySelector('.header-modal');
+    const modalOverlay = document.querySelector('.overlay');
+    const button = document.querySelector('#btn-callback');
     // const popupContent = modal.querySelector('.popup-content');
-    // let count = -750;
+    let top = 30;
 
-    // const modalAnimate = () => {
-    //     animate({
-    //         duration: 500,
-    //         timing(timeFraction) {
-    //             return 1 - Math.sin(Math.acos(timeFraction));
-    //         },
-    //         draw(progress) {
-    //             popupContent.style.transform = 'translateX(' + (count + (700 * progress)) + 'px)';
-    //         }
-    //     })
-    // };
+    const modalAnimate = () => {
+        animate({
+            duration: 300,
+            timing(timeFraction) {
+                return timeFraction;
+            },
+            draw(progress) {
+                console.log((progress * (top + 50) - 30));
+                modal.style.top = (progress * (top + 50) - 30) + '%';
+            }
+        })
+    };
 
 
-    // buttons.forEach(btn => {
-    //     btn.addEventListener('click', () => {
-    //         modal.style.display = 'block';
-    //         if (window.screen.width > 767) { modalAnimate() };
-    //     })
-    // });
+
+    button.addEventListener('click', () => {
+        modal.style.display = 'block';
+        modalOverlay.style.display = 'block';
+        modalAnimate();
+    })
 
     // modal.addEventListener('click', (e) => {
     //     if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
