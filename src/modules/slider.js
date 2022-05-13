@@ -14,18 +14,18 @@ const slider = () => {
 
     const prevSlide = () => {
         let lastElem = benefitsItems[benefitsArr.length - 1];
-        lastElem.remove(); //удаляется последний элемент
-        benefitsItems[0].before(lastElem); // он добавляется в начало блока
-        benefitsItems = document.querySelectorAll('.benefits__item'); // переопределяется объект слайдов
-        newArr(); //пересобирается массив слайдов
+        lastElem.remove();
+        benefitsItems[0].before(lastElem);
+        benefitsItems = document.querySelectorAll('.benefits__item');
+        newArr();
     }
 
     const nextSlide = () => {
         let firstElem = benefitsArr[0];
-        firstElem.remove(); //удаляется первый элемент
-        benefitsItems[benefitsArr.length - 1].after(firstElem); // он добавляется в конец блока
-        benefitsItems = document.querySelectorAll('.benefits__item'); // переопределяется объект слайдов
-        newArr(); //пересобирается массив слайдов
+        firstElem.remove();
+        benefitsItems[benefitsArr.length - 1].after(firstElem);
+        benefitsItems = document.querySelectorAll('.benefits__item');
+        newArr();
     }
 
     const showSlide = () => {
