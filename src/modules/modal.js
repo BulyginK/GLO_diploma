@@ -1,10 +1,9 @@
 import { animate } from './helpers'
 
 const modal = () => {
-    const button = document.querySelector('#btn-callback');
+    const okna = document.querySelector('.okna');
     const modal = document.querySelector('.header-modal');
     const modalOverlay = document.querySelector('.overlay');
-    const closeBtn = modal.querySelector('.header-modal__close');
 
     const modalAnimate = () => {
         animate({
@@ -18,20 +17,17 @@ const modal = () => {
         })
     };
 
-    const modalClose = () => {
-        modal.style.display = 'none';
-        modalOverlay.style.display = 'none';
-    }
-
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.style.display = 'block';
-        modalOverlay.style.display = 'block';
-        modalAnimate();
+    okna.addEventListener('click', (e) => {
+        if (e.target.closest('#btn-callback')) {
+            e.preventDefault();
+            modal.style.display = 'block';
+            modalOverlay.style.display = 'block';
+            modalAnimate();
+        } else if (e.target.closest('.header-modal__close') || e.target.closest('.overlay')) {
+            modal.style.display = 'none';
+            modalOverlay.style.display = 'none';
+        }
     })
-
-    modalOverlay.addEventListener('click', () => { modalClose() })
-    closeBtn.addEventListener('click', () => { modalClose() })
 }
 
 export default modal;
