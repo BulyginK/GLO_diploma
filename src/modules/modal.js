@@ -1,7 +1,6 @@
 import { animate } from './helpers'
 
 const modal = () => {
-    console.log('работает');
     const body = document.querySelector('body');
     const modal = document.querySelector('.header-modal');
     const modalOverlay = document.querySelector('.overlay');

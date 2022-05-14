@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_benefitSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/benefitSlider */ \"./src/modules/benefitSlider.js\");\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\nbenefitSlider()\n\n//# sourceURL=webpack://glo_diploma/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_benefitSlider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/benefitSlider */ \"./src/modules/benefitSlider.js\");\n/* harmony import */ var _modules_servicesSlider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/servicesSlider */ \"./src/modules/servicesSlider.js\");\n\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\n;(0,_modules_benefitSlider__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n;(0,_modules_servicesSlider__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n\n//# sourceURL=webpack://glo_diploma/./src/index.js?");
 
 /***/ }),
 
@@ -46,7 +46,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ \"./src/modules/helpers.js\");\n\n\nconst modal = () => {\n    console.log('работает');\n    const body = document.querySelector('body');\n    const modal = document.querySelector('.header-modal');\n    const modalOverlay = document.querySelector('.overlay');\n\n    const modalAnimate = () => {\n        (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.animate)({\n            duration: 300,\n            timing(timeFraction) {\n                return timeFraction;\n            },\n            draw(progress) {\n                modal.style.top = (progress * 85 - 35) + '%';\n            }\n        })\n    };\n\n    body.addEventListener('click', (e) => {\n        if (e.target.closest('#btn-callback')) {\n            e.preventDefault();\n            modal.style.display = 'block';\n            modalOverlay.style.display = 'block';\n            modalAnimate();\n        } else if (e.target.closest('.header-modal__close') || e.target.closest('.overlay')) {\n            modal.style.display = 'none';\n            modalOverlay.style.display = 'none';\n        }\n    })\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modal);\n\n//# sourceURL=webpack://glo_diploma/./src/modules/modal.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ \"./src/modules/helpers.js\");\n\n\nconst modal = () => {\n    const body = document.querySelector('body');\n    const modal = document.querySelector('.header-modal');\n    const modalOverlay = document.querySelector('.overlay');\n\n    const modalAnimate = () => {\n        (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.animate)({\n            duration: 300,\n            timing(timeFraction) {\n                return timeFraction;\n            },\n            draw(progress) {\n                modal.style.top = (progress * 85 - 35) + '%';\n            }\n        })\n    };\n\n    body.addEventListener('click', (e) => {\n        if (e.target.closest('#btn-callback')) {\n            e.preventDefault();\n            modal.style.display = 'block';\n            modalOverlay.style.display = 'block';\n            modalAnimate();\n        } else if (e.target.closest('.header-modal__close') || e.target.closest('.overlay')) {\n            modal.style.display = 'none';\n            modalOverlay.style.display = 'none';\n        }\n    })\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modal);\n\n//# sourceURL=webpack://glo_diploma/./src/modules/modal.js?");
+
+/***/ }),
+
+/***/ "./src/modules/servicesSlider.js":
+/*!***************************************!*\
+  !*** ./src/modules/servicesSlider.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst servicesSlider = () => {\n    console.log('servicesSlider');\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (servicesSlider);\n\n//# sourceURL=webpack://glo_diploma/./src/modules/servicesSlider.js?");
 
 /***/ })
 

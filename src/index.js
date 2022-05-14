@@ -1,5 +1,7 @@
 import modal from './modules/modal';
-import slider from './modules/benefitSlider';
+import benefitSlider from './modules/benefitSlider';
+import servicesSlider from './modules/servicesSlider';
 
 modal()
 benefitSlider()
+servicesSlider()
