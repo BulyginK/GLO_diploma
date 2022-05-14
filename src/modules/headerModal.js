@@ -1,6 +1,6 @@
 import { animate } from './helpers'
 
-const modal = () => {
+const headerModal = () => {
     const body = document.querySelector('body');
     const modal = document.querySelector('.header-modal');
     const modalOverlay = document.querySelector('.overlay');
@@ -30,4 +30,4 @@ const modal = () => {
     })
 }
 
-export default modal;
+export default headerModal;

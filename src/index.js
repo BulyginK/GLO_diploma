@@ -1,7 +1,9 @@
-import modal from './modules/modal';
+import headerModal from './modules/headerModal';
 import benefitSlider from './modules/benefitSlider';
 import servicesSlider from './modules/servicesSlider';
+import servicesModal from './modules/servicesModal';
 
-modal()
+headerModal()
 benefitSlider()
 servicesSlider()
+servicesModal()
