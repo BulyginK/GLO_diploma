@@ -1,4 +1,4 @@
-const slider = () => {
+const benefitSlider = () => {
     const benefits = document.querySelector('.benefits-wrap');
     const benefitsArrows = document.querySelector('.benefits-arrows');
     let benefitsItems = document.querySelectorAll('.benefits__item');
@@ -60,4 +60,4 @@ const slider = () => {
     showSlide();
 }
 
-export default slider
+export default benefitSlider
