@@ -19,4 +19,12 @@ function animate({ timing, draw, duration }) {
     });
 }
 
+function newArr({ arr, items }) {
+    arr = [];
+    for (let i = 0; i < items.length; i++) {
+        arr.push(items[i]);
+    }
+
+}
+
 export { animate }
