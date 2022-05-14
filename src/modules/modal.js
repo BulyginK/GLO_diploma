@@ -1,7 +1,8 @@
 import { animate } from './helpers'
 
 const modal = () => {
-    const okna = document.querySelector('.okna');
+    console.log('работает');
+    const body = document.querySelector('body');
     const modal = document.querySelector('.header-modal');
     const modalOverlay = document.querySelector('.overlay');
 
@@ -17,7 +18,7 @@ const modal = () => {
         })
     };
 
-    okna.addEventListener('click', (e) => {
+    body.addEventListener('click', (e) => {
         if (e.target.closest('#btn-callback')) {
             e.preventDefault();
             modal.style.display = 'block';
