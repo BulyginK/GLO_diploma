@@ -1,35 +1,48 @@
 const timer = (deadline) => {
-    console.log('+++');
-    // const timerHours = document.getElementById('timer-hours');
-    // const timerMinutes = document.getElementById('timer-minutes');
-    // const timerSeconds = document.getElementById('timer-seconds');
-    // let interval
+    const timerDays = document.querySelectorAll('.count_1>span');
+    const timerHours = document.querySelectorAll('.count_2>span');
+    const timerMinutes = document.querySelectorAll('.count_3>span');
+    const timerSeconds = document.querySelectorAll('.count_4>span');
+    let interval
 
-    // const getTimeRemaining = () => {
-    //     let dateStop = new Date(deadline).getTime();
-    //     let dateNow = new Date().getTime();
-    //     let timeRemaining = (dateStop - dateNow) / 1000;
-    //     let hours = Math.floor(timeRemaining / 60 / 60);
-    //     let minutes = Math.floor((timeRemaining / 60) % 60);
-    //     let seconds = Math.floor(timeRemaining % 60);
-    //     return { timeRemaining, hours, minutes, seconds }
-    // }
+    const getTimeRemaining = () => {
+        let dateStop = new Date(deadline).getTime();
+        let dateNow = new Date().getTime();
+        let timeRemaining = (dateStop - dateNow) / 1000;
+        let days = Math.floor(timeRemaining / 60 / 60 / 24);
+        let hours = Math.floor((timeRemaining / 60 / 60) % 24);
+        let minutes = Math.floor((timeRemaining / 60) % 60);
+        let seconds = Math.floor(timeRemaining % 60);
+        if (timeRemaining <= 0) {
+            days = '0';
+            hours = '0';
+            minutes = '0';
+            seconds = '0';
+        }
+        return { timeRemaining, days, hours, minutes, seconds }
+    }
 
-    // const updateClock = () => {
-    //     let getTime = getTimeRemaining ();
-    //     timerHours.textContent = getTime.hours < 10 ? '0' + getTime.hours : getTime.hours;
-    //     timerMinutes.textContent = getTime.minutes < 10 ? '0' + getTime.minutes : getTime.minutes;
-    //     timerSeconds.textContent = getTime.seconds < 10 ? '0' + getTime.seconds : getTime.seconds;
+    const pasteTextContent = (obj, elem) => {
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                obj[key].textContent = elem < 10 ? '0' + elem : elem;
+            }
+        }
+    }
 
-    //     if (getTime.timeRemaining <= 0) {
-    //         clearInterval(interval);
-    //         timerHours.textContent = '00';
-    //         timerMinutes.textContent = '00';
-    //         timerSeconds.textContent = '00';
-    //     }
-    // }
+    const updateClock = () => {
+        let getTime = getTimeRemaining();
+        pasteTextContent(timerDays, getTime.days);
+        pasteTextContent(timerHours, getTime.hours);
+        pasteTextContent(timerMinutes, getTime.minutes);
+        pasteTextContent(timerSeconds, getTime.seconds);
 
-    // interval = setInterval(updateClock, 500);
+        if (getTime.timeRemaining <= 0) {
+            clearInterval(interval);
+        }
+    }
+
+    interval = setInterval(updateClock, 500);
 }
 
 export default timer
