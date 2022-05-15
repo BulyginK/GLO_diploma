@@ -3,9 +3,11 @@ import benefitSlider from './modules/benefitSlider';
 import servicesSlider from './modules/servicesSlider';
 import servicesModal from './modules/servicesModal';
 import timer from './modules/timer';
+import sendForm from './modules/sendForm';
 
 headerModal()
 benefitSlider()
 servicesSlider()
 servicesModal()
 timer('19 may 2022')
+sendForm()
