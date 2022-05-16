@@ -8,8 +8,13 @@ const sendForm = () => {
 }
 
 const sendForms = (nameForm) => {
-    const name = '[name="' + nameForm + '"]';
-    const form = document.querySelector(name);
+    const form = document.querySelector('[name="' + nameForm + '"]');
+    const btn = form.querySelector('button');
+    
+    const textOriginal = btn.textContent;
+    const loadText = 'Загрузка...';
+    const errorText = 'Ошибка!';
+    const successText = 'Вы получили скидку!';
 
     const validate = () => {
         let success = true;
@@ -35,9 +40,10 @@ const sendForms = (nameForm) => {
 
     const submitForm = () => {
         const formElements = form.querySelectorAll('input');
-
         const formData = new FormData(form);
         const formBody = {};
+
+        btn.textContent = loadText;
         
         formData.forEach((val, key) => {
             formBody[key] = val;
@@ -47,6 +53,8 @@ const sendForms = (nameForm) => {
             console.log(formBody);
             sendData(formBody)
                 .then(data => {
+                    btn.textContent = successText;
+
                     formElements.forEach(input => {
                         input.value = '';
                     })
@@ -55,7 +63,7 @@ const sendForms = (nameForm) => {
                     alert('Данные не отправлены');;
                 })
         } else {
-            alert('Данные не валидны');
+            btn.textContent = errorText;
             formElements.forEach(input => {
                 input.value = '';
             })
@@ -71,6 +79,8 @@ const sendForms = (nameForm) => {
             e.preventDefault();
 
             submitForm();
+
+            setTimeout(() => btn.textContent = textOriginal, 2500);
         })
     } catch (error) {
         console.log(error.message);
