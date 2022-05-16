@@ -1,32 +1,37 @@
 const sertificates = () => {
+    const body = document.querySelector('body');
     const sertificateDocuments = document.querySelectorAll('.sertificate-document');
+    const modalOverlay = document.querySelector('.overlay');
 
-    const modalBlock = document.createElement('img');
-    modalBlock.style.display = 'block';
-    modalBlock.style.position = 'fixed';
-    modalBlock.style.top = '50%';
-    modalBlock.style.left = '50%';
-    modalBlock.style.zIndex = '9999';
-    modalBlock.style.transform = 'translate(-50%, -50%)';    
-    modalBlock.style.maxHeight = '95%';    
+    const modalBlock = document.createElement('div');
+    const clone = modalOverlay.cloneNode(true);
+    
+        
 
     sertificateDocuments.forEach(elem => {
         elem.addEventListener('click', e => {
             e.preventDefault();
-
-            const modalOverlay = document.querySelector('.overlay');
             let href = e.target.closest('.sertificate-document').getAttribute('href');
             
-            let clone = modalOverlay.cloneNode(true);
-            modalBlock.setAttribute('src', href);
+            const imgDocument = document.createElement('img');
+            imgDocument.setAttribute('src', href);
             
-            elem.append(modalBlock);
-            elem.append(clone);
+            body.append(modalBlock);
+            modalBlock.append(imgDocument);
+            modalBlock.append(clone);
+
+            imgDocument.style.display = 'block';
+            imgDocument.style.position = 'fixed';
+            imgDocument.style.top = '50%';
+            imgDocument.style.left = '50%';
+            imgDocument.style.zIndex = '9999';
+            imgDocument.style.transform = 'translate(-50%, -50%)';    
+            imgDocument.style.maxHeight = '95%';
             clone.style.display = 'block';
 
             modalBlock.addEventListener('click', () => {
-                modalBlock.style.display = 'none';
-                console.log(clone);
+                modalBlock.innerHTML = '';
+                modalBlock.remove()
             })
         })
     });
