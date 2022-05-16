@@ -1,16 +1,31 @@
 const scroll = () => {
-    // const observer = new IntersectionObserver((entries, observer) => {
-    //     entries.forEach(entry => {
-    //         if (entry.isIntersecting) {
-    //             console.log(entry)
-    //             // ссылка на оригинальное изображение хранится в атрибуте "data-src"
-    //             entry.target.src = entry.target.dataset.src
-    //             observer.unobserve(entry.target)
-    //         }
-    //     })
-    // }, { threshold: 0.5 })
+    let smoothScroll = document.querySelector('.smooth-scroll');
 
-    // document.querySelectorAll('img').forEach(img => observer.observe(img))
+    smoothScroll.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector('#header').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+
+    const options = {
+        threshold: 0
+    };
+
+    const callback = function () {
+        let elem = document.querySelector('.smooth-scroll');
+        if (elem.style.display === 'none') {
+            elem.style.display = 'block'
+        } else {
+            elem.style.display = 'none'
+        }
+
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    observer.observe(document.querySelector('#navigation'))
 }
 
 export default scroll

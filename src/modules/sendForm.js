@@ -10,7 +10,9 @@ const sendForm = () => {
 const sendForms = (nameForm) => {
     const form = document.querySelector('[name="' + nameForm + '"]');
     const btn = form.querySelector('button');
-    
+    const inputName = form.querySelectorAll('[name="fio"]');
+    const inputPhone = form.querySelectorAll('[name="phone"]');
+
     const textOriginal = btn.textContent;
     const loadText = 'Отправка...';
     const errorText = 'Ошибка отправки!';
@@ -44,13 +46,12 @@ const sendForms = (nameForm) => {
         const formBody = {};
 
         btn.textContent = loadText;
-        
+
         formData.forEach((val, key) => {
             formBody[key] = val;
         })
-        
+
         if (validate()) {
-            console.log(formBody);
             sendData(formBody)
                 .then(data => {
                     btn.textContent = successText;
@@ -60,9 +61,11 @@ const sendForms = (nameForm) => {
                     })
                 })
                 .catch(error => {
-                    alert('Данные не отправлены');;
+                    console.log(error.message);
+                    alert('Данные не отправлены');
                 })
         } else {
+            console.log('Данные не валидны');
             btn.textContent = errorText;
             formElements.forEach(input => {
                 input.value = '';
@@ -85,6 +88,18 @@ const sendForms = (nameForm) => {
     } catch (error) {
         console.log(error.message);
     }
+
+    for (let i = 0; i < inputName.length; i++) {
+        inputName[i].addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^а-яА-ЯЁёA-Za-z]/, "");
+        });
+    };
+
+    for (let i = 0; i < inputPhone.length; i++) {
+        inputPhone[i].addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^\d\+]/, "");
+        });
+    };
 }
 
 export default sendForm
