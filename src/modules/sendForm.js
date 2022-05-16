@@ -16,9 +16,6 @@ const sendForms = (nameForm) => {
         const userName = form.querySelector('[name="fio"]');
         const userPhone = form.querySelector('[name="phone"]');
 
-        console.log(userPhone.value);
-
-
         if (/^[а-яА-ЯЁёA-Za-z]+$/.test(userName.value) && /^\+[\d]{0,16}$/.test(userPhone.value)) {
             return success
         } else {
@@ -41,12 +38,13 @@ const sendForms = (nameForm) => {
 
         const formData = new FormData(form);
         const formBody = {};
-
+        
         formData.forEach((val, key) => {
             formBody[key] = val;
         })
-
+        
         if (validate()) {
+            console.log(formBody);
             sendData(formBody)
                 .then(data => {
                     formElements.forEach(input => {
@@ -73,8 +71,6 @@ const sendForms = (nameForm) => {
             e.preventDefault();
 
             submitForm();
-
-            // setTimeout(() => statusBlock.remove(), 2500);
         })
     } catch (error) {
         console.log(error.message);
