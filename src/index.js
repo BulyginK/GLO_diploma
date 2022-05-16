@@ -5,6 +5,7 @@ import servicesModal from './modules/servicesModal';
 import timer from './modules/timer';
 import sendForm from './modules/sendForm';
 import sertificates from './modules/sertificates';
+import scroll from './modules/scroll';
 
 headerModal()
 benefitSlider()
@@ -13,3 +14,4 @@ servicesModal()
 timer('19 may 2022')
 sendForm()
 sertificates()
+scroll()
