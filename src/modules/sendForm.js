@@ -12,9 +12,9 @@ const sendForms = (nameForm) => {
     const btn = form.querySelector('button');
     
     const textOriginal = btn.textContent;
-    const loadText = 'Загрузка...';
-    const errorText = 'Ошибка!';
-    const successText = 'Вы получили скидку!';
+    const loadText = 'Отправка...';
+    const errorText = 'Ошибка отправки!';
+    const successText = 'Скидка Ваша!';
 
     const validate = () => {
         let success = true;
