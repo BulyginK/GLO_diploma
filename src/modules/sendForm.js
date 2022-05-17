@@ -18,12 +18,15 @@ const sendForms = (nameForm) => {
     const errorText = 'Ошибка отправки!';
     const successText = 'Скидка Ваша!';
 
+    const regularName = /^[а-яА-ЯЁёA-Za-z]+$/;
+    const regularPhone = /^\+[\d]{0,16}$/;
+
     const validate = () => {
         let success = true;
         const userName = form.querySelector('[name="fio"]');
         const userPhone = form.querySelector('[name="phone"]');
 
-        if (/^[а-яА-ЯЁёA-Za-z]+$/.test(userName.value) && /^\+[\d]{0,16}$/.test(userPhone.value)) {
+        if (regularName.test(userName.value) && regularPhone.test(userPhone.value)) {
             return success
         } else {
             return success = false
@@ -62,7 +65,6 @@ const sendForms = (nameForm) => {
                 })
                 .catch(error => {
                     btn.textContent = errorText;
-                    // alert('Данные не отправлены');
                 })
         } else {
             btn.textContent = errorText;
@@ -70,6 +72,24 @@ const sendForms = (nameForm) => {
                 input.value = '';
             })
         }
+    }
+
+    const inputError = (inputElem, regular, alert) => {
+        for (let i = 0; i < inputElem.length; i++) {
+            const textError = document.createElement('span');
+
+            inputElem[i].parentElement.append(textError);
+            textError.classList.add('help-block');
+
+            inputElem[i].addEventListener('input', (e) => {
+                textError.innerHTML = '';
+                e.target.classList.remove('error');
+                if (!regular.test(e.target.value)) {
+                    e.target.classList.add('error');
+                    textError.innerHTML = alert;
+                }
+            });
+        };
     }
 
     try {
@@ -88,28 +108,8 @@ const sendForms = (nameForm) => {
         console.log(error.message);
     }
 
-    
-
-    for (let i = 0; i < inputName.length; i++) {
-        const textError = document.createElement('label');
-        
-        inputName[i].parentElement.append(textError);
-
-        inputName[i].addEventListener('input', (e) => {
-            textError.innerHTML = '';
-            if (!/^[а-яА-ЯЁёA-Za-z]+$/.test(e.target.value)) {
-                textError.innerHTML = 'Вводите пожалуйста буквы';
-                e.target.style.boxShadow = '#ff0101'
-            }          
-            e.target.value = e.target.value.replace(/[^а-яА-ЯЁёA-Za-z]/, "");
-        });
-    };
-
-    for (let i = 0; i < inputPhone.length; i++) {
-        inputPhone[i].addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/[^\d\+]/, "");
-        });
-    };
+    inputError(inputName, regularName, 'Вводите пожалуйста буквы');
+    inputError(inputPhone, regularPhone, 'Вводите телефон в формате "+79276802419"');
 }
 
 export default sendForm
