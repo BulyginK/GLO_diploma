@@ -1,5 +1,5 @@
 const scroll = () => {
-    let smoothScroll = document.querySelector('.smooth-scroll');
+    const smoothScroll = document.querySelector('.smooth-scroll');
 
     smoothScroll.addEventListener('click', (e) => {
         e.preventDefault();
@@ -10,22 +10,22 @@ const scroll = () => {
     });
 
     const options = {
-        threshold: 0
+        threshold: 1
     };
 
-    const callback = function () {
-        let elem = document.querySelector('.smooth-scroll');
-        if (elem.style.display === 'none') {
-            elem.style.display = 'block'
-        } else {
-            elem.style.display = 'none'
-        }
-
+    const viewSmoothScroll = function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.intersectionRatio == 1) {
+                smoothScroll.classList.remove('smooth-scroll-active');
+            } else {
+                smoothScroll.classList.add('smooth-scroll-active');
+            }
+        })
     };
 
-    const observer = new IntersectionObserver(callback, options);
+    const observer = new IntersectionObserver(viewSmoothScroll, options);
 
-    observer.observe(document.querySelector('#navigation'))
+    observer.observe(document.querySelector('#header'));
 }
 
 export default scroll

@@ -1659,10 +1659,15 @@ input.error {
 }
 
 .smooth-scroll {
+  display: none;
   position: fixed;
   right: 25px;
   bottom: 25px;
   transform: rotate(90deg);
+}
+
+.smooth-scroll-active {
+  display: block;
 }
 
 @media (min-width: 576px) {
