@@ -61,11 +61,10 @@ const sendForms = (nameForm) => {
                     })
                 })
                 .catch(error => {
-                    console.log(error.message);
-                    alert('Данные не отправлены');
+                    btn.textContent = errorText;
+                    // alert('Данные не отправлены');
                 })
         } else {
-            console.log('Данные не валидны');
             btn.textContent = errorText;
             formElements.forEach(input => {
                 input.value = '';
@@ -89,8 +88,19 @@ const sendForms = (nameForm) => {
         console.log(error.message);
     }
 
+    
+
     for (let i = 0; i < inputName.length; i++) {
+        const textError = document.createElement('label');
+        
+        inputName[i].parentElement.append(textError);
+
         inputName[i].addEventListener('input', (e) => {
+            textError.innerHTML = '';
+            if (!/^[а-яА-ЯЁёA-Za-z]+$/.test(e.target.value)) {
+                textError.innerHTML = 'Вводите пожалуйста буквы';
+                e.target.style.boxShadow = '#ff0101'
+            }          
             e.target.value = e.target.value.replace(/[^а-яА-ЯЁёA-Za-z]/, "");
         });
     };
