@@ -5,6 +5,7 @@ const headerModal = () => {
     const modal = document.querySelector('.header-modal');
     const modalOverlay = document.querySelector('.overlay');
 
+    //анимация появления модального окна через функцию-помощник
     const modalAnimate = () => {
         animate({
             duration: 300,
@@ -17,6 +18,7 @@ const headerModal = () => {
         })
     };
 
+    //слушатель нажатия на кнопки заказ звонка и закрытия модального окна через крестик и через клик мимо окна
     body.addEventListener('click', (e) => {
         if (e.target.closest('#btn-callback')) {
             e.preventDefault();

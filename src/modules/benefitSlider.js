@@ -4,6 +4,7 @@ const benefitSlider = () => {
     let benefitsItems = document.querySelectorAll('.benefits__item');
     let benefitsArr = [];
 
+    //создание массива из имеющихся элементов
     const newArr = () => {
         benefitsArr = [];
         for (let i = 0; i < benefitsItems.length; i++) {
@@ -12,6 +13,7 @@ const benefitSlider = () => {
         }
     }
 
+    //смена слайда при нажатии на кнопку назад с пересозданием массива элементов
     const prevSlide = () => {
         let lastElem = benefitsItems[benefitsArr.length - 1];
         lastElem.remove();
@@ -20,6 +22,7 @@ const benefitSlider = () => {
         newArr();
     }
 
+    //смена слайда при нажатии на кнопку вперед с пересозданием массива элементов
     const nextSlide = () => {
         let firstElem = benefitsArr[0];
         firstElem.remove();
@@ -28,6 +31,7 @@ const benefitSlider = () => {
         newArr();
     }
 
+    //изменение количенства видимых слайдов при разных размерах экранов
     const showSlide = () => {
         if (window.screen.width >= 576) {
             for (let i = 0; i < benefitsItems.length; i++) {
@@ -45,6 +49,7 @@ const benefitSlider = () => {
         }
     }
 
+    //слушатель нажатия на кнопки смены слайдов
     benefitsArrows.addEventListener('click', (e) => {
         e.preventDefault();
         if (e.target.matches('#benefits__arrow--left')) {

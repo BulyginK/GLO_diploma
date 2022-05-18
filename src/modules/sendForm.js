@@ -1,6 +1,6 @@
 const sendForm = () => {
     const forms = document.querySelectorAll('.order-form>form');
-
+    
     forms.forEach((elem) => {
         const nameForm = elem.name;
         sendForms(nameForm);

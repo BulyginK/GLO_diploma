@@ -24,7 +24,6 @@ function newArr({ arr, items }) {
     for (let i = 0; i < items.length; i++) {
         arr.push(items[i]);
     }
-
 }
 
 export { animate }

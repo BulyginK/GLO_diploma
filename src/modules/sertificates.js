@@ -1,17 +1,18 @@
-const sertificates = () => {
+// создание функции отображения документа во весь экран поверх страницы
+const sertificates = () => {  
     const body = document.querySelector('body');
     const sertificateDocuments = document.querySelectorAll('.sertificate-document');
     const modalOverlay = document.querySelector('.overlay');
 
     const modalBlock = document.createElement('div');
     const clone = modalOverlay.cloneNode(true);
-    
-        
 
     sertificateDocuments.forEach(elem => {
         elem.addEventListener('click', e => {
             e.preventDefault();
-            let href = e.target.closest('.sertificate-document').getAttribute('href');
+
+            //получение ссылки на оригинальную картинку
+            let href = e.target.closest('.sertificate-document').getAttribute('href'); 
             
             const imgDocument = document.createElement('img');
             imgDocument.setAttribute('src', href);
