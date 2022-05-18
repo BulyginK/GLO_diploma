@@ -49,7 +49,7 @@ const benefitSlider = () => {
         }
     }
 
-    //слушатель нажатия на кнопки смены слайдов
+    //слушатель нажатия на стрелки
     benefitsArrows.addEventListener('click', (e) => {
         e.preventDefault();
         if (e.target.matches('#benefits__arrow--left')) {

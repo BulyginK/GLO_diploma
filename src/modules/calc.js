@@ -5,12 +5,6 @@ const calc = () => {
     const calcInput = document.querySelector('#calc-input');
     const calcTotal = document.querySelector('#calc-total');
 
-    
-
-    calcInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/\D+/, "")
-    });
-    
     const countCalc = () => {
         calcTotal.disabled = false;
         let valueTypeMaterial = 1;
@@ -22,16 +16,14 @@ const calc = () => {
         calcTotal.value = Math.round(calcType.options[calcType.selectedIndex].value * calcInput.value * valueTypeMaterial);
     }
 
-    calc.addEventListener('input', (e) => {
-        if (calcType.options[calcType.selectedIndex].value > 0 && calcInput.value > 0) {
+    calc.addEventListener('input', () => {
+        calcInput.value = calcInput.value.replace(/\D/, "");
+        if (calcType.selectedIndex != 0 && calcInput.value > 0) {
             countCalc();
-        } 
-        // else {
-        //     // calcType.options[calcType.selectedIndex] = calcType.options[0];
-        //     // calcInput.value = '';
-        //     // calcTypeMaterial.options[calcTypeMaterial.selectedIndex] = calcTypeMaterial.options[0];
-        // }
-
+        }
+        else if (calcType.selectedIndex == 0 || calcInput.value == 0 || calcTypeMaterial.selectedIndex == 0) {
+            calcTotal.value = '';
+        }
     })
 }
 
