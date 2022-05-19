@@ -7,6 +7,7 @@ import sendForm from './modules/sendForm';
 import sertificates from './modules/sertificates';
 import scroll from './modules/scroll';
 import calc from './modules/calc';
+import reviews from './modules/reviews';
 
 headerModal()
 benefitSlider()
@@ -17,3 +18,5 @@ sendForm()
 sertificates()
 scroll()
 calc()
+calc()
+reviews()
