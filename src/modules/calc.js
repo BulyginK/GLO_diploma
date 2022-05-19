@@ -6,10 +6,12 @@ const calc = () => {
         const calcInput = document.querySelector('#calc-input');
         const calcTotal = document.querySelector('#calc-total');
 
+        // вывод итогов в окно "итого"
         const countCalc = () => {
             calcTotal.disabled = false;
-            let valueTypeMaterial = 1;
 
+            // использование типа остекления
+            let valueTypeMaterial = 1; 
             if (calcTypeMaterial.options[calcTypeMaterial.selectedIndex].value > 0) {
                 valueTypeMaterial = calcTypeMaterial.options[calcTypeMaterial.selectedIndex].value
             }
@@ -19,11 +21,11 @@ const calc = () => {
 
         calc.addEventListener('input', () => {
             calcInput.value = calcInput.value.replace(/\D/, "");
-            if (calcType.selectedIndex != 0 && calcInput.value > 0) {
+            if (calcType.selectedIndex != 0 && calcInput.value > 0) { // поля балкон/лоджия и площадь должны быть заполнены
                 countCalc();
             }
             else if (calcType.selectedIndex == 0 || calcInput.value == 0 || calcTypeMaterial.selectedIndex == 0) {
-                calcTotal.value = '';
+                calcTotal.value = ''; // очищать поле итого, если где то не выбрано значение 
             }
         })
     }
