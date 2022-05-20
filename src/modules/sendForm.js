@@ -24,7 +24,6 @@ const sendForms = ({ formName, someElem = [] }) => {
     const textOriginal = btn.textContent;
     const loadText = 'Отправка...';
     const errorText = 'Ошибка отправки!';
-    const successText = 'Скидка Ваша!';
 
     const regularName = /^[а-яА-ЯЁёA-Za-z]+$/;
     const regularPhone = /^\+[\d]{0,16}$/;
@@ -73,8 +72,6 @@ const sendForms = ({ formName, someElem = [] }) => {
         if (validate()) {
             sendData(formBody)
                 .then(data => {
-                    btn.textContent = successText;
-
                     formElements.forEach(input => {
                         input.value = '';
                     })
